@@ -51,15 +51,21 @@ var server = http.createServer(function (request, response) {
     response.setHeader('Content-Type', 'text/css; charset=utf-8');
     response.write('文件不存在');
     response.end();
-  } else if (path === '/pay' && method.toUpperCase() === 'POST') {
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/html;charset=utf-8');
+  } else if (path === '/pay') {
+    response.setHeader('Content-Type', 'image/jpg');
     var amount = fs.readFileSync('./db', 'utf8');
-    var newAmout = amount - 1;
-    // db 里的 100 是 string 类型的，重写数据时也要先转换成 string
-    fs.writeFileSync('./db', newAmout.toString());
-    response.write('付款成功');
+    if (Math.random() > 0.5) {
+      response.statusCode = 200;
+      var newAmout = amount - 1;
+      // db 里的 100 是 string 类型的，重写数据时也要先转换成 string
+      fs.writeFileSync('./db', newAmout.toString());
+      response.write(fs.readFileSync("./dog.jpg"))
+    }else{
+      response.statusCode = 400;
+      response.write("faile")
+    }
     response.end();
+
   } else {
     response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');
@@ -73,7 +79,7 @@ var server = http.createServer(function (request, response) {
 server.listen(port);
 console.log(
   '监听 ' +
-    port +
-    ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' +
-    port
+  port +
+  ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' +
+  port
 );
