@@ -14,14 +14,23 @@
   <p id="text">你的余额还剩<span id="amount">&&&amount&&&</span></p>
   <button id="button">付款</button>
   <script>
-    var n = 0;
+    // 1、前端写好需要执行的代码（提供形参）
+    var xxx = (info)=>{
+      if(info > 0.5){
+        console.log("失败")
+      }else{
+        console.log("成功")
+      }
+    }
+    
+    // setTimeout(console.log(xxx()),10000)
+    
+    // 2、发送请求
     button.addEventListener('click', () => {
       var script = document.createElement("script");
       script.src = "/pay";
       document.body.appendChild(script);
-      n +=1;
     });
-
   </script>
   <script src="./main.js"></script>
 </body>

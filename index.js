@@ -52,20 +52,12 @@ var server = http.createServer(function (request, response) {
     response.write('文件不存在');
     response.end();
   } else if (path === '/pay') {
-    var a = Math.random();
-    if (a > 0.5) {
-      response.statusCode = 200;
-      console.log(a);
-      console.log("3");
-      response.write("")
-      response.end();
-    } else {
-      response.statusCode = 400;
-      console.log(a);
-      console.log("4");
-      response.write("")
-      response.end();
-    }
+    // 3、后端收到请求后，把实参传给前端，并同时把执行语句传给前端。
+    response.statusCode = 200;
+    var number = Math.random();
+    response.setHeader('Content-Type', 'application/javascript;charset=utf-8');
+    response.write(`xxx.call(undefined,${number})`);
+    response.end();
   } else {
     response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');
