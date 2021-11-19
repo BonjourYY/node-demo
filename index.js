@@ -56,7 +56,10 @@ var server = http.createServer(function (request, response) {
     response.statusCode = 200;
     var number = Math.random();
     response.setHeader('Content-Type', 'application/javascript;charset=utf-8');
+    // 如果 dataType:"jsonp",就用下面的。
     response.write(`${query.callback}.call(undefined,${number})`);
+    // 如果 dataType:"json",就用下面的。
+    // response.write(`${number}`);
     response.end();
   } else {
     response.statusCode = 404;
