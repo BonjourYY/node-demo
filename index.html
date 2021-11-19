@@ -29,6 +29,14 @@
           console.log("成功")
         }
       }
+      script.onload=(e)=>{
+        e.currentTarget.remove();
+        delete window[functionName];
+      }
+      script.onerror=(e)=>{
+        e.currentTarget.remove();
+        delete window[functionName];
+      }
     });
   </script>
   <script src="./main.js"></script>
