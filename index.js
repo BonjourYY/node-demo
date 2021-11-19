@@ -56,7 +56,7 @@ var server = http.createServer(function (request, response) {
     response.statusCode = 200;
     var number = Math.random();
     response.setHeader('Content-Type', 'application/javascript;charset=utf-8');
-    response.write(`xxx.call(undefined,${number})`);
+    response.write(`${query.callback}.call(undefined,${number})`);
     response.end();
   } else {
     response.statusCode = 404;
