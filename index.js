@@ -6,7 +6,7 @@ var url = require('url');
 var port = process.argv[2];
 
 if (!port) {
-  console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？');
+  // console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？');
   process.exit(1);
 }
 
@@ -23,12 +23,12 @@ var server = http.createServer(function (request, response) {
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('方方说：含查询字符串的路径\n' + pathWithQuery);
+  // console.log('方方说：含查询字符串的路径\n' + pathWithQuery);
 
   if (path === '/') {
     var html = fs.readFileSync('./index.html', 'utf8');
-    var amount = fs.readFileSync('./db', 'utf8');
-    html = html.replace('&&&amount&&&', amount);
+    // var amount = fs.readFileSync('./db', 'utf8');
+    // html = html.replace('&&&amount&&&', amount);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');
     response.write(html);
@@ -52,20 +52,20 @@ var server = http.createServer(function (request, response) {
     response.write('文件不存在');
     response.end();
   } else if (path === '/pay') {
-    response.setHeader('Content-Type', 'image/jpg');
-    var amount = fs.readFileSync('./db', 'utf8');
-    if (Math.random() > 0.5) {
+    var a = Math.random();
+    if (a > 0.5) {
       response.statusCode = 200;
-      var newAmout = amount - 1;
-      // db 里的 100 是 string 类型的，重写数据时也要先转换成 string
-      fs.writeFileSync('./db', newAmout.toString());
-      response.write(fs.readFileSync("./dog.jpg"))
-    }else{
+      console.log(a);
+      console.log("3");
+      response.write("")
+      response.end();
+    } else {
       response.statusCode = 400;
-      response.write("faile")
+      console.log(a);
+      console.log("4");
+      response.write("")
+      response.end();
     }
-    response.end();
-
   } else {
     response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');

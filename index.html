@@ -7,24 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./style/1.css" />
+  <!-- <link rel="stylesheet" href="./style/1.css" /> -->
 </head>
 
 <body>
   <p id="text">你的余额还剩<span id="amount">&&&amount&&&</span></p>
   <button id="button">付款</button>
   <script>
+    var n = 0;
     button.addEventListener('click', () => {
-      var image = document.createElement("img");
-      image.src = "/pay";
-      image.onload = () => {
-        alert("付款成功")
-        window.location.reload();
-      }
-      image.onerror = () => {
-        alert("付款失败")
-      }
+      var script = document.createElement("script");
+      script.src = "/pay";
+      document.body.appendChild(script);
+      n +=1;
     });
+
   </script>
   <script src="./main.js"></script>
 </body>
