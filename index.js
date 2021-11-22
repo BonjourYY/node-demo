@@ -39,14 +39,19 @@ var server = http.createServer(function (request, response) {
     response.end();
   } else if (path === "/xxx") {
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/xml;charset=utf-8');
-    response.write(`<?xml version="1.0" encoding="UTF-8"?>
-    <note>
-      <to>Tove</to>
-      <from>Jani</from>
-      <heading>Reminder</heading>
-      <body>Don't forget me this weekend!</body>
-    </note>`);
+    response.setHeader('Content-Type', 'text/json;charset=utf-8');
+    response.setHeader('Access-Control-Allow-Origin',"*");
+    // 后端只能返回字符串给前端，只不过这个字符串符合某种语言的格式，前端可以调用方法去解析
+    response.write(`
+    {
+      "note":{
+        "to":"Tove",
+        "from":"Jani",
+        "heading":"Reminder",
+        "body":"Dont't forget me this weekend!"
+      }
+    }
+    `);
     response.end();
   }
   else {
