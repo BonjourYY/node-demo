@@ -5,27 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="./style.css" />
-  <!-- <script src="./node_modules/jquery/dist/jquery.min.js"></script> -->
+  <title>原生JS方法实现AJAX请求</title>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="./style/1.css" /> -->
 </head>
 
 <body>
-  <p id="text">你的余额还剩<span id="amount">&&&amount&&&</span></p>
-  <button id="button">付款</button>
-  <script>
-    // 2、发送请求
-    button.addEventListener('click', () => {
-      $.ajax("/pay",{
-        dataType:"jsonp",
-        success:(response)=>{
-          console.log(response)
-        }
-      })
-    });
-  </script>
+  <button id="button">点我</button>
   <script src="./main.js"></script>
 </body>
 

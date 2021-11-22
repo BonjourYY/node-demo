@@ -27,41 +27,29 @@ var server = http.createServer(function (request, response) {
 
   if (path === '/') {
     var html = fs.readFileSync('./index.html', 'utf8');
-    // var amount = fs.readFileSync('./db', 'utf8');
-    // html = html.replace('&&&amount&&&', amount);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');
     response.write(html);
     response.end();
-  } else if (path === '/style.css') {
-    var css = fs.readFileSync('./style.css', 'utf8');
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/css; charset=utf-8');
-    response.write(css);
-    response.end();
-  } else if (path === '/main.js') {
+  } else if (path === "/main.js") {
     var js = fs.readFileSync('./main.js', 'utf8');
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+    response.setHeader('Content-Type', 'application/javascript;charset=utf-8');
     response.write(js);
     response.end();
-  } else if (path === '/1.css') {
-    // var css2 = fs.readFileSync('./1.css', 'utf8');
+  } else if (path === "/xxx") {
     response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/css; charset=utf-8');
-    response.write('文件不存在');
+    response.setHeader('Content-Type', 'text/xml;charset=utf-8');
+    response.write(`<?xml version="1.0" encoding="UTF-8"?>
+    <note>
+      <to>Tove</to>
+      <from>Jani</from>
+      <heading>Reminder</heading>
+      <body>Don't forget me this weekend!</body>
+    </note>`);
     response.end();
-  } else if (path === '/pay') {
-    // 3、后端收到请求后，把实参传给前端，并同时把执行语句传给前端。
-    response.statusCode = 200;
-    var number = Math.random();
-    response.setHeader('Content-Type', 'application/javascript;charset=utf-8');
-    // 如果 dataType:"jsonp",就用下面的。
-    response.write(`${query.callback}.call(undefined,${number})`);
-    // 如果 dataType:"json",就用下面的。
-    // response.write(`${number}`);
-    response.end();
-  } else {
+  }
+  else {
     response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html;charset=utf-8');
     response.write('呜呜呜');
